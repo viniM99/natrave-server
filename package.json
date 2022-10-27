@@ -5,7 +5,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "dev": "node-dev -r dotenv-safe/config app/index.js"
+    "dev": "node-dev -r dotenv-safe/config api/index.js"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
