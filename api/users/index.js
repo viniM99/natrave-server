@@ -16,7 +16,21 @@ export const create = async (ctx) => {
 
     try {
         const { password, ...user } = await prisma.user.create({ data })
-        ctx.body = user
+            
+        // const { password, ...result } = use
+
+        const accesToken = jwt.sign({
+            sub: user.id,
+            name: user.name,
+            expiresIn: "7d"
+        }, process.env.JWT_SECRET)
+
+        ctx.body = {
+            user: user,
+            accesToken
+        }
+
+        // ctx.body = user
         ctx.status = 201
     } catch (error) {
         console.log(error)
